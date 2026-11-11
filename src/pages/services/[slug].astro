@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteConfig, services, getServiceBySlug } from '../../data/site';
+
+export function getStaticPaths() {
+  return services.map(s => ({
+    params: { slug: s.slug },
+    props: { service: s }
+  }));
+}
+
+const { service } = Astro.props;
+---
+
+<BaseLayout
+  title={`${service.title} in Lakewood, OH`}
+  description={service.description}
+  canonicalPath={`/services/${service.slug}`}
+>
+  <section class="section" style="padding-top: 2.5rem; padding-bottom: 2rem;">
+    <div class="container">
+      <nav aria-label="Breadcrumb" style="margin-bottom: 1.25rem; font-size: 0.9rem;">
+        <a href="/">Home</a>
+        <span aria-hidden="true"> / </span>
+        <a href="/services">Services</a>
+        <span aria-hidden="true"> / </span>
+        <span>{service.shortTitle}</span>
+      </nav>
+      
+      <h1>{service.title}</h1>
+      <p style="font-size: 1.15rem; color: var(--color-text-muted); max-width: 42rem;">
+        {service.intro}
+      </p>
+      <div class="hero-actions" style="margin-top: 1.5rem;">
+        <a href={siteConfig.phoneHref} class="btn btn-primary">Call {siteConfig.phone}</a>
+        <a href="/contact" class="btn btn-secondary">Request This Service</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="grid-2" style="align-items: start;">
+        <div>
+          <h2>How We Handle It</h2>
+          <ol class="process-steps">
+            {service.process.map(step => (
+              <li>{step}</li>
+            ))}
+          </ol>
+        </div>
+        <div>
+          <div class="card" style="position: sticky; top: calc(var(--header-height) + 1rem);">
+            <h3 style="margin-top: 0;">Price Range Guidance</h3>
+            <p style="margin-bottom: 1rem;">{service.priceRange}</p>
+            <p class="text-muted" style="font-size: 0.9rem; margin-bottom: 1.25rem;">
+              Final cost depends on access, materials, and findings once we are on site. We discuss options before proceeding with non-emergency work.
+            </p>
+            <a href="/contact" class="btn btn-primary" style="width: 100%;">Get a Clear Next Step</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width: 48rem;">
+      <h2>Frequently Asked Questions</h2>
+      {service.faqs.map(faq => (
+        <div class="faq-item">
+          <h3>{faq.question}</h3>
+          <p>{faq.answer}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: 1.5rem;">Related Services</h2>
+      <div class="grid-3">
+        {services
+          .filter(s => s.slug !== service.slug)
+          .slice(0, 3)
+          .map(s => (
+            <article class="card">
+              <h3 style="font-size: 1.1rem;"><a href={`/services/${s.slug}`}>{s.shortTitle}</a></h3>
+              <p style="margin-bottom: 0.75rem;">{s.description.slice(0, 100)}…</p>
+              <a href={`/services/${s.slug}`}>View →</a>
+            </article>
+          ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <h2>Ready for Help with {service.shortTitle}?</h2>
+    <p>Call or send a message—we serve Lakewood and nearby communities.</p>
+    <div class="flex flex-wrap gap-2 justify-center">
+      <a href={siteConfig.phoneHref} class="btn btn-primary btn-lg">Call {siteConfig.phone}</a>
+      <a href="/contact" class="btn btn-outline-light btn-lg">Contact Form</a>
+    </div>
+  </section>
+</BaseLayout>

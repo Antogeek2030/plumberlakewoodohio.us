@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteConfig, serviceAreas, services, getAreaBySlug } from '../../data/site';
+
+export function getStaticPaths() {
+  return serviceAreas.map(a => ({
+    params: { slug: a.slug },
+    props: { area: a }
+  }));
+}
+
+const { area } = Astro.props;
+---
+
+<BaseLayout
+  title={`Plumber in ${area.name} | Lakewood Ohio Plumbing`}
+  description={`Plumbing services in ${area.name}. ${area.description} Call for repairs, water heaters, drains, and more.`}
+  canonicalPath={`/service-areas/${area.slug}`}
+>
+  <section class="section" style="padding-top: 2.5rem;">
+    <div class="container">
+      <nav aria-label="Breadcrumb" style="margin-bottom: 1.25rem; font-size: 0.9rem;">
+        <a href="/">Home</a>
+        <span aria-hidden="true"> / </span>
+        <a href="/service-areas">Service Areas</a>
+        <span aria-hidden="true"> / </span>
+        <span>{area.name}</span>
+      </nav>
+      
+      <h1>Plumbing Services in {area.name}</h1>
+      <p style="font-size: 1.15rem; color: var(--color-text-muted); max-width: 42rem;">
+        {area.description} Our team is based nearby in Lakewood and provides the same careful, communicative service whether you are around the corner or a short drive away.
+      </p>
+      <div class="hero-actions" style="margin-top: 1.5rem;">
+        <a href={siteConfig.phoneHref} class="btn btn-primary">Call {siteConfig.phone}</a>
+        <a href="/contact" class="btn btn-secondary">Request Service in {area.name}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Services Available in {area.name}</h2>
+      <p class="text-muted">We bring the full range of our plumbing work to this area.</p>
+      <div class="grid-3" style="margin-top: 1.5rem;">
+        {services.map(s => (
+          <article class="card">
+            <h3 style="font-size: 1.05rem;"><a href={`/services/${s.slug}`}>{s.shortTitle}</a></h3>
+            <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">{s.description.slice(0, 100)}…</p>
+            <a href={`/services/${s.slug}`}>Learn more →</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <h2>Need a Plumber in {area.name}?</h2>
+    <p>Local response from a Lakewood-based team. Call or message us today.</p>
+    <a href={siteConfig.phoneHref} class="btn btn-primary btn-lg">Call {siteConfig.phone}</a>
+  </section>
+</BaseLayout>

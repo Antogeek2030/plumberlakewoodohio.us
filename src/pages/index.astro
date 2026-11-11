@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig, services, serviceAreas } from '../data/site';
+
+const featuredServices = services.slice(0, 6);
+---
+
+<BaseLayout
+  title="Plumber in Lakewood, Ohio | Reliable Local Plumbing Services"
+  description="Trusted plumbing services in Lakewood, OH. Emergency repairs, drain cleaning, water heaters, and more. Local team serving Lakewood and nearby communities. Call for prompt help."
+  canonicalPath="/"
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Your Local Plumber in Lakewood, Ohio</h1>
+      <p>
+        From emergency leaks to water heater replacements, we provide careful, straightforward plumbing service for homes and businesses in Lakewood and surrounding neighborhoods.
+      </p>
+      <div class="hero-actions">
+        <a href={siteConfig.phoneHref} class="btn btn-primary btn-lg">
+          Call {siteConfig.phone}
+        </a>
+        <a href="/contact" class="btn btn-outline-light btn-lg">Request Service</a>
+      </div>
+      <div class="hero-meta">
+        <span>✓ Lakewood-based</span>
+        <span>✓ Clear pricing discussion</span>
+        <span>✓ Residential & light commercial</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services overview -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Plumbing Services We Offer</h2>
+        <p>Practical solutions for everyday plumbing needs—whether it is a slow drain, a water heater that has given up, or a full fixture upgrade.</p>
+      </div>
+      <div class="grid-3">
+        {featuredServices.map(s => (
+          <article class="card">
+            <h3><a href={`/services/${s.slug}`}>{s.shortTitle}</a></h3>
+            <p>{s.description}</p>
+            <a href={`/services/${s.slug}`} class="font-semibold">Learn more →</a>
+          </article>
+        ))}
+      </div>
+      <p class="text-center" style="margin-top: 2rem;">
+        <a href="/services" class="btn btn-secondary">View All Services</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Trust section -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Homeowners Call Us</h2>
+        <p>We focus on clear communication, careful workmanship, and treating your property with respect.</p>
+      </div>
+      <ul class="trust-list">
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          Local Lakewood focus
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          Upfront conversation about options
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          Clean work areas
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          Follow-through after the job
+        </li>
+      </ul>
+      <div style="max-width: 40rem; margin: 2.5rem auto 0; text-align: center;">
+        <p class="text-muted">
+          We do not publish fabricated reviews or unverifiable claims. Our reputation is built one job at a time through reliable service and honest recommendations.
+        </p>
+        <p style="margin-top: 1rem;">
+          <a href="/about" class="btn btn-secondary">About Our Approach</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service areas teaser -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Serving Lakewood & Nearby Communities</h2>
+        <p>Based in Lakewood, we regularly work in the surrounding west-side communities.</p>
+      </div>
+      <div class="grid-4">
+        {serviceAreas.slice(0, 8).map(a => (
+          <a href={`/service-areas/${a.slug}`} class="card" style="text-decoration: none; color: inherit;">
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.35rem;">{a.name}</h3>
+            <p style="margin: 0; font-size: 0.9rem;">{a.description.slice(0, 80)}…</p>
+          </a>
+        ))}
+      </div>
+      <p class="text-center" style="margin-top: 2rem;">
+        <a href="/service-areas" class="btn btn-secondary">See All Service Areas</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <h2>Need a Plumber in Lakewood?</h2>
+    <p>Tell us what is going on and we will help you figure out the next step—whether that is an urgent visit or a scheduled repair.</p>
+    <div class="flex flex-wrap gap-2 justify-center">
+      <a href={siteConfig.phoneHref} class="btn btn-primary btn-lg">Call {siteConfig.phone}</a>
+      <a href="/contact" class="btn btn-outline-light btn-lg">Send a Message</a>
+    </div>
+  </section>
+</BaseLayout>

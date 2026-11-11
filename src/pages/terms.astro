@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../data/site';
+---
+
+<BaseLayout
+  title="Terms of Service"
+  description="Terms of service for using the plumberlakewoodohio.us website and requesting plumbing services."
+  canonicalPath="/terms"
+>
+  <section class="section" style="padding-top: 2.5rem;">
+    <div class="container prose">
+      <h1>Terms of Service</h1>
+      <p class="text-muted">Last updated: November 2025</p>
+      
+      <p>
+        By using {siteConfig.domain} or requesting service from {siteConfig.name}, you agree to these terms.
+      </p>
+      
+      <h2>Website content</h2>
+      <p>
+        Information on this website is provided for general guidance. Service descriptions, process outlines, and price ranges are illustrative and may change based on actual conditions, materials, and scope. A firm quote or estimate is provided only after evaluation of the specific job.
+      </p>
+      
+      <h2>Service requests</h2>
+      <p>
+        Submitting a form or calling does not create a binding contract until we confirm availability and you accept the proposed work and terms. We reserve the right to decline work outside our service area or scope.
+      </p>
+      
+      <h2>Emergency response</h2>
+      <p>
+        We make reasonable efforts to respond to urgent calls, but response times are not guaranteed and depend on weather, traffic, existing job load, and other factors beyond our control.
+      </p>
+      
+      <h2>Limitation of liability</h2>
+      <p>
+        To the fullest extent permitted by law, we are not liable for indirect, incidental, or consequential damages arising from use of the website or from plumbing services, except as required by applicable law or written agreement for a specific job.
+      </p>
+      
+      <h2>Intellectual property</h2>
+      <p>
+        Content on this site—including text, layout, and branding—is owned by us or our licensors and may not be reused without permission.
+      </p>
+      
+      <h2>Changes</h2>
+      <p>
+        We may update these terms from time to time. Continued use of the site after changes constitutes acceptance of the revised terms.
+      </p>
+      
+      <h2>Contact</h2>
+      <p>
+        Questions about these terms: <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> or {siteConfig.address.full}.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

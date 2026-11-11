@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../data/site';
+---
+
+<BaseLayout
+  title="About Us | Local Plumbers in Lakewood, Ohio"
+  description="Learn about our approach to plumbing in Lakewood, OH—clear communication, careful work, and respect for your home. No hype, just reliable service."
+  canonicalPath="/about"
+>
+  <section class="section" style="padding-top: 2.5rem;">
+    <div class="container" style="max-width: 44rem;">
+      <h1>About Plumber Lakewood Ohio</h1>
+      <p style="font-size: 1.15rem; color: var(--color-text-muted);">
+        We are a local plumbing team focused on Lakewood and the nearby west-side communities. Our goal is simple: show up when we say we will, explain what we find, and leave the job better than we found it.
+      </p>
+      
+      <h2>How We Work</h2>
+      <p>
+        Plumbing problems are stressful enough without unclear pricing or rushed work. We take time to diagnose, discuss options in plain language, and only proceed once you understand the path forward. For true emergencies we prioritize stopping damage first, then talk through permanent fixes.
+      </p>
+      <p>
+        We serve residential and light commercial customers. Whether it is a dripping faucet, a failing water heater, or a main line issue, the same standards apply: careful protection of your property, clean work areas, and follow-up when it is useful.
+      </p>
+      
+      <h2>Our Service Area</h2>
+      <p>
+        Lakewood is home base. We also regularly work in Rocky River, Fairview Park, Westlake, Bay Village, Edgewater, and nearby parts of Cleveland’s west side. If you are slightly outside these areas, feel free to ask—we will tell you honestly whether we can help.
+      </p>
+      
+      <h2>What We Do Not Do</h2>
+      <p>
+        We do not invent reviews, statistics, or credentials. We do not pressure you into unnecessary work. If a repair is temporary or a system is near the end of its useful life, we will say so and help you plan the next step.
+      </p>
+      
+      <h2>Ready to Talk?</h2>
+      <p>
+        Call <a href={siteConfig.phoneHref}>{siteConfig.phone}</a> or use the <a href="/contact">contact form</a>. Tell us what is going on and we will help you decide the best next move.
+      </p>
+      
+      <p style="margin-top: 2rem;">
+        <strong>{siteConfig.address.full}</strong>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../data/site';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="Privacy policy for plumberlakewoodohio.us — how we handle contact form submissions and website data."
+  canonicalPath="/privacy-policy"
+>
+  <section class="section" style="padding-top: 2.5rem;">
+    <div class="container prose">
+      <h1>Privacy Policy</h1>
+      <p class="text-muted">Last updated: November 2025</p>
+      
+      <p>
+        This privacy policy describes how {siteConfig.name} (“we,” “us”) collects and uses information when you visit {siteConfig.domain} or contact us through the website.
+      </p>
+      
+      <h2>Information we collect</h2>
+      <p>
+        When you submit the contact form, we receive the name, phone number, email address (if provided), service category, and message you enter. This information is used solely to respond to your inquiry and schedule service if requested.
+      </p>
+      <p>
+        Our hosting and analytics providers may collect standard technical data such as IP address, browser type, and pages visited. We do not use this data to identify individual visitors for marketing purposes.
+      </p>
+      
+      <h2>How we use information</h2>
+      <ul>
+        <li>To respond to service requests and questions</li>
+        <li>To improve the website and our service</li>
+        <li>To comply with legal obligations if required</li>
+      </ul>
+      
+      <h2>Form handling</h2>
+      <p>
+        Contact form submissions are processed by Web3Forms. Their handling of data is governed by their own privacy policy. We do not sell or rent your contact information.
+      </p>
+      
+      <h2>Cookies and tracking</h2>
+      <p>
+        The site may use essential cookies required for basic functionality. We do not operate third-party advertising trackers on this site.
+      </p>
+      
+      <h2>Third-party links</h2>
+      <p>
+        Links to external sites (for example, map providers) are not under our control. Their privacy practices may differ from ours.
+      </p>
+      
+      <h2>Contact</h2>
+      <p>
+        Questions about this policy can be sent to <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> or by mail to {siteConfig.address.full}.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
